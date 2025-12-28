@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Original+Surfer&family=Outfit:wght@100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-pri: #10367D;
+  --color-rred: #C70000;
+  --color-wwhite: #F9FAF0;
+  --default-font-family: "Outfit", sans-serif;
+  --color-bblack: #1F2937;
+  --font-coiny: "Coiny", system-ui;
+  --font-original: "Original Surfer", sans-serif;
+}
+
+.offscreen {
+  @apply absolute -left-[100000000px]
+}
+
+.input-field {
+  @apply border border-[#d0d0d0] text-bblack w-full rounded-[15px] text-sm p-2.5 inset-shadow-2xs focus:ring-0 focus:outline-0 placeholder:text-[#bbbbbb]
+}
+
+.textarea {
+  @apply border border-[#d0d0d0] text-bblack w-full rounded-[15px] text-sm p-4 inset-shadow-2xs focus:ring-0 focus:outline-0 placeholder:text-[#bbbbbb]
+}
+
+body{
+  background-color: #f8f8f8;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
