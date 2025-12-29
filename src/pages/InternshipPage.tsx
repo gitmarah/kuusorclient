@@ -35,7 +35,7 @@ const InternshipPage: React.FC = () => {
 
     const handleApplication = async () => {
         if(!user?.studentId || !internship?.id){
-            console.log(student);
+            console.log(user);
             console.log(internship)
             setToastProps({ message: "Student and Internship ID are required!", timeout: 5000, isError: true });
             return;
