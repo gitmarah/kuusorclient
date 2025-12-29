@@ -340,11 +340,13 @@ const validateLinkedInLinkDetailed = (url: string): string | null => {
     if (trimmed.length > 255) return "LinkedIn link is too long (maximum 255 characters)!";
     if (/\s/.test(trimmed)) return "LinkedIn link cannot contain spaces!";
     if (!/^https?:\/\//.test(trimmed)) return "LinkedIn link must start with http:// or https://";
-    const linkedinPattern = /^https?:\/\/(www\.)?linkedin\.com\/(in|company)\/[A-Za-z0-9-_%]+\/?$/;
+    const linkedinPattern = /^https?:\/\/(www\.)?linkedin\.com\/(in|company)\/[A-Za-z0-9-_%]+\/?(?:\?.*)?$/;
     if (!linkedinPattern.test(trimmed)) {
         if (!/linkedin\.com/.test(trimmed)) return "LinkedIn link must be from linkedin.com";
         return "LinkedIn link format is invalid!"; }
-    return null; };
+    return null;
+};
+
 
 
 
