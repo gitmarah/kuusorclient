@@ -139,7 +139,7 @@ const Signup: React.FC = () => {
                 </div></> : <div className='flex flex-col items-center gap-3'>
                     <h2 className='font-original text-pri'>Continue With Google As</h2>
                     <div className='flex gap-2'>
-                        <a href={`http://localhost:4321/api/v1/auth/google?role=STUDENT`} className="max-w-50 mt-2 w-full cursor-pointer">
+                        <a href={`${import.meta.env.VITE_API_URL}/auth/google?role=STUDENT`} className="max-w-50 mt-2 w-full cursor-pointer">
                             <div className={`border border-gray-400 rounded-[15px] flex flex-col p-2 items-center text-pri transition-all hover:border-gray-300`}>
                                 <img src="/students.png" width={"100px"} alt="" />
                                 <div className='flex items-center gap-1'>
@@ -147,7 +147,7 @@ const Signup: React.FC = () => {
                                 </div>
                             </div>
                         </a>                      
-                        <a href={`http://localhost:4321/api/v1/auth/google?role=COMPANY`} className="max-w-50 mt-2 w-full cursor-pointer">
+                        <a href={`${import.meta.env.VITE_API_URL}/auth/google?role=COMPANY`} className="max-w-50 mt-2 w-full cursor-pointer">
                             <div className={`border border-gray-400 rounded-[15px] flex flex-col p-2 items-center text-pri transition-all hover:border-gray-300`}>
                                 <img src="/company.png" width={"100px"} alt="" />
                                 <div className='flex items-center gap-1'>
