@@ -63,7 +63,6 @@ const EditInternship: React.FC = () => {
         const errors = postInternshipValidationRules(formData);
         setValidationErrors(errors)
         if(Object.values(errors).filter(value => value !== null).length > 0) return;
-        console.log(formData);
         try{
             if(!internship?.id) {
                 setToastProps({ message: "Internship Id is required!", timeout: 5000, isError: true });

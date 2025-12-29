@@ -37,7 +37,6 @@ const GoogleOAuth: React.FC = () => {
     useEffect(() => {
         if (isError) {
             navigate("/signin");
-            console.log(data)
         }
     }, [data, isError, navigate]);
 

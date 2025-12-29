@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const baseQuery = fetchBaseQuery({
-      baseUrl: "http://localhost:4321/api/v1",
+      baseUrl: import.meta.env.VITE_API_URL,
       credentials: "include",
     });
     const refreshApp = async() => {
@@ -22,9 +22,7 @@ const App: React.FC = () => {
         dispatch(clearCredentials());
       }
     }
-    
     refreshApp();
-
   }, []);
 
   return (

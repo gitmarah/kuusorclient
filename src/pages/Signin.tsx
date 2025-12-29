@@ -42,7 +42,6 @@ const Signin: React.FC = () => {
         if(Object.values(errors).filter(value => value !== null).length > 0) return
         try{
             const response = await signIn(formData).unwrap();
-            console.log(response);
             if(response.token) {
                 dispatch(setCredentials(response));
                 navigate("/");}

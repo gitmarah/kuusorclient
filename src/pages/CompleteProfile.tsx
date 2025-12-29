@@ -27,10 +27,6 @@ const CompleteProfile: React.FC = () => {
     const [toastProps, setToastProps] = useState<ToastProps>({ message: null, timeout: 0, isError: false });
 
     useEffect(() => {
-        console.log(isStudent);
-    }, [isStudent]);
-
-    useEffect(() => {
         if(user){
             if(!user.isNewUser) navigate("/");
             setFormData({...formData, 
@@ -109,8 +105,7 @@ const CompleteProfile: React.FC = () => {
             if(!user?.id) return;
             const response = await updateProfile({body, id: user?.id}).unwrap();
             if(response){
-                dispatch(setUser(response))
-                console.log(response);
+                dispatch(setUser(response));
             }
         }catch(err){
             if(err && typeof err === "object" && "data" in err){

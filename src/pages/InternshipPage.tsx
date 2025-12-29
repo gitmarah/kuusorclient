@@ -47,7 +47,6 @@ const InternshipPage: React.FC = () => {
                 setApplied(true);
             }
         } catch(err){
-            console.log(err)
             if(err && typeof err === "object" && "data" in err){
                 const e = err as { data: { message: string } };
                 setToastProps({ message: e.data.message, timeout: 5000, isError: true });
@@ -68,7 +67,6 @@ const InternshipPage: React.FC = () => {
                 navigate(-1);
             }
         } catch(err){
-            console.log(err)
             if(err && typeof err === "object" && "data" in err){
                 const e = err as { data: { message: string } };
                 setToastProps({ message: e.data.message, timeout: 5000, isError: true });

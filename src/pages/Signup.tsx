@@ -1,5 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
-import React, { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
+import React, { useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import type { SignupFormData, ToastProps } from '../utils/types';
 import { studentSignUpValidationRules, type StudentSignUpValidationErrors, companySignUpValidationRules, type CompanySignUpValidationErrors } from '../utils/validationRules';
@@ -19,10 +19,6 @@ const Signup: React.FC = () => {
     const [studentValidationErrors, setStudentValidationErrors] = useState<StudentSignUpValidationErrors>({ firstname: null, lastname: null, email: null, password: null, confirmpassword: null });
     const [companyValidationErrors, setCompanyValidationErrors] = useState<CompanySignUpValidationErrors>({ companyname: null, industry: null, email: null, password: null, confirmpassword: null });
     const [toastProps, setToastProps] = useState<ToastProps>({ message: null, timeout: 0, isError: false });
-
-    useEffect(() => {
-        console.log(isStudent);
-    }, [isStudent]);
 
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,8 +47,6 @@ const Signup: React.FC = () => {
 
         setCompanyValidationErrors({ companyname: null, industry: null, email: null, password: null, confirmpassword: null });
         setStudentValidationErrors({ firstname: null, lastname: null, email: null, password: null, confirmpassword: null })
-        console.log(formData);
-
         try{
             const body = isStudent ? { ...formData, role: "STUDENT" } : { ...formData, role: "COMPANY" };
             const response = await signUp(body).unwrap();
@@ -145,7 +139,7 @@ const Signup: React.FC = () => {
                 </div></> : <div className='flex flex-col items-center gap-3'>
                     <h2 className='font-original text-pri'>Continue With Google As</h2>
                     <div className='flex gap-2'>
-                        <a href={`http://localhost:4321/api/v1/auth/google?role=STUDENT`} className="max-w-[200px] mt-2 w-full cursor-pointer">
+                        <a href={`http://localhost:4321/api/v1/auth/google?role=STUDENT`} className="max-w-50 mt-2 w-full cursor-pointer">
                             <div className={`border border-gray-400 rounded-[15px] flex flex-col p-2 items-center text-pri transition-all hover:border-gray-300`}>
                                 <img src="/students.png" width={"100px"} alt="" />
                                 <div className='flex items-center gap-1'>
@@ -153,7 +147,7 @@ const Signup: React.FC = () => {
                                 </div>
                             </div>
                         </a>                      
-                        <a href={`http://localhost:4321/api/v1/auth/google?role=COMPANY`} className="max-w-[200px] mt-2 w-full cursor-pointer">
+                        <a href={`http://localhost:4321/api/v1/auth/google?role=COMPANY`} className="max-w-50 mt-2 w-full cursor-pointer">
                             <div className={`border border-gray-400 rounded-[15px] flex flex-col p-2 items-center text-pri transition-all hover:border-gray-300`}>
                                 <img src="/company.png" width={"100px"} alt="" />
                                 <div className='flex items-center gap-1'>

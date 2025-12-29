@@ -26,12 +26,7 @@ const EditProfile: React.FC = () => {
     const [toastProps, setToastProps] = useState<ToastProps>({ message: null, timeout: 0, isError: false });
 
     useEffect(() => {
-        console.log(isStudent);
-    }, [isStudent]);
-
-    useEffect(() => {
         if(user){
-            console.log(user)
             setFormData({...formData, 
                 companyname: user.companyname || "", 
                 industry: user.industry || "",
@@ -113,17 +108,13 @@ const EditProfile: React.FC = () => {
         try{
             if(!user?.id) return;
             const response = await updateProfile({body, id: user?.id}).unwrap();
-            console.log(response)
             if(response){
                 dispatch(setUser(response));
-                console.log(response);
                 navigate(`/profile/${user?.id}`);
             }
         }catch(err){
-            console.log(err)
             if(err && typeof err === "object" && "data" in err){
                 const e = err as { data: { message: string } };
-                console.log(e.data.message);
                 setToastProps({ message: e.data.message, timeout: 5000, isError: true });
             }
         }
