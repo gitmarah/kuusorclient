@@ -22,7 +22,7 @@ const Home: React.FC = () => {
                 <button onClick={() => navigate("/students")} className='text-sm w-full text-white py-1.5 rounded-[15px] hover:opacity-90 cursor-pointer active:scale-95 transition-all bg-[#74B4DA] mb-2'>Browse Students</button>                
             </div>
 
-            <main className='px-5 md:px-0 md:max-w-3/4 lg:max-w-full lg:px-10 md:mx-auto'>
+            <main className='px-5 md:px-0 md:max-w-3/4 md:mx-auto'>
                 {fetchingCompanyInternships ? <div className='flex justify-center items-center pt-3'><Loader color='pri' bgcolor='transparent' /></div> : <div><div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-2 pb-3 text-bblack ${user?.role !== "COMPANY" && "hidden"}`}>
                     {companyInternships?.map(internship => <InternshipExcerpt key={internship?.id} internship={internship} />)}
                     {companyInternships?.length === 0 && <div className='w-full flex flex-col justify-center items-center'>
