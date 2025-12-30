@@ -58,7 +58,7 @@ const InternshipPage: React.FC = () => {
 
     const handleDelete = async () => {
         if(!internship?.id){
-            setToastProps({ message: "Student and Internship ID are required!", timeout: 5000, isError: true });
+            setToastProps({ message: "Internship ID are required!", timeout: 5000, isError: true });
             return;
         }
         try{

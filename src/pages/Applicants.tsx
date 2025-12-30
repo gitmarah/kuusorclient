@@ -36,8 +36,7 @@ const Applicants: React.FC = () => {
     useEffect(() => {
         if(students) {
             const selectedStudents = students.filter(student => student.selected);
-            setSelected(selectedStudents.map(student => student.id));
-        }
+            setSelected(selectedStudents.map(student => student.id)); }
     }, [students]);
 
     const numberToWords = (num: number): string => {
