@@ -10,7 +10,7 @@ const userApi = api.injectEndpoints({
                 method: "PATCH",
                 body
             }),
-            invalidatesTags: (result) => result ? [{ type: "User" as const, id: result.id }, { type: "User" as const, id: "LIST" }] : [{ type: "User" as const, id: "LIST" }]
+            invalidatesTags: (result) => result ? [{ type: "User" as const, id: result.id }, { type: "User" as const, id: "LIST" }, { type: "Student" as const, id: "LIST" }] : [{ type: "User" as const, id: "LIST" }, { type: "Student" as const, id: "LIST" }]
         }),
         uploadResume: builder.mutation<User, {body: FormData, id: string}>({
             query: ({body, id}) => ({
@@ -18,6 +18,7 @@ const userApi = api.injectEndpoints({
                 method: "PATCH",
                 body
             }),
+            invalidatesTags: (result) => result ? [{ type: "User" as const, id: result.id }, { type: "User" as const, id: "LIST" }, { type: "Student" as const, id: result.id }, { type: "Student" as const, id: "LIST" }] : [{ type: "User" as const, id: "LIST" }, { type: "Student" as const, id: "LIST" }]
         }),
         getUser: builder.query<User, string>({
             query: (id) => `/users/${id}`,
