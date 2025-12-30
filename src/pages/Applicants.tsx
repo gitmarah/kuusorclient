@@ -168,8 +168,8 @@ const Applicants: React.FC = () => {
                     }
                     {
                         showShortlistOptions && <>
-                            <div className='fixed transition-all top-0 bottom-0 left-0 right-0 z-40 bg-wwhite flex justify-center items-center'>
-                                <form onSubmit={handleShortlist} className='w-full p-5 flex flex-col gap-2'>
+                            <div className='fixed transition-all top-0 bottom-0 left-0 right-0 z-40 bg-white flex justify-center items-center'>
+                                <form onSubmit={handleShortlist} className='w-full p-5 flex flex-col gap-2 max-w-87.5'>
                                     <h2 className='text-center font-original text-pri'>Send Interview Details<br/>to Shortlisted Candidates</h2>
                                     <div className='flex flex-col gap-0.5'>
                                         <label htmlFor="datetime" className='text-bblack text-[0.8rem]'>Interview Date & Time<span className='text-rred'>*</span></label>

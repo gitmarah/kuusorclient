@@ -197,7 +197,7 @@ const CompleteProfile: React.FC = () => {
                     </>}
                     {updateLinks && <><button onClick={() => setUpdateLinks(true)} type='submit' className='bg-pri hover:opacity-90 transition-all w-full p-2.5 rounded-[15px] text-sm font-bold text-white flex justify-center items-center h-10 cursor-pointer gap-1'>
                         {updatingProfile ? <Loader color='white' bgcolor='transparent' /> : "Continue"}
-                        <ArrowRight size={15} />                    
+                        {!updatingProfile && <ArrowRight size={15} />}                    
                     </button>
                     <button className='text-gray-400 underline cursor-pointer hover:text-gray-400/90 active:text-gray-400/80 text-sm' onClick={() => setUpdateLinks(false)}>Go Back</button></>}
                 </form>

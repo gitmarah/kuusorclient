@@ -10,7 +10,7 @@ import BackBtn from '../components/BackBtn';
 import Loader from '../components/Loader';
 import type { ToastProps } from '../utils/types';
 import Toast from '../components/Toast';
-import { useInternshipApplicationMutation } from '../app/api/application';
+import { useGetApplicationsByStudentQuery, useInternshipApplicationMutation } from '../app/api/application';
 
 
 const InternshipPage: React.FC = () => {
@@ -18,7 +18,7 @@ const InternshipPage: React.FC = () => {
     const params = useParams();
     const navigate = useNavigate();
     const user = useAppSelector(state => state.auth.user);
-    const { applications, isLoadingApplications } = useAppSelector(state => state.applications);
+    const { data: applications, isLoading: isLoadingApplications } = useGetApplicationsByStudentQuery(user?.studentId ?? skipToken);
     const { data: internship, isLoading: fetchingInternship, error } = useGetInternshipQuery(params.id ?? skipToken);
     const [apply, { isLoading: applying }] = useInternshipApplicationMutation();
     const [deleteInternship, { isLoading: deleting }] = useDeleteInternshipMutation();
@@ -30,7 +30,8 @@ const InternshipPage: React.FC = () => {
     const benefits = internship?.benefits?.split("\n");
     const [toastProps, setToastProps] = useState<ToastProps>({ message: null, timeout: 0, isError: false });
     useEffect(() => {
-        if(applications) setApplied(applications?.some(application => application.internshipId === internship?.id))
+        if(applications) setApplied(applications?.some(application => application?.internshipId === internship?.id));
+        console.log(applications)
     }, [applications, internship?.id]);
 
     const handleApplication = async () => {

@@ -30,11 +30,11 @@ const applicationApi = api.injectEndpoints({
         }),
         getApplicationsByStudent: builder.query<Applications[], string>({
             query: (id) => `/applications/student/${id}`,
-            providesTags: (result) => result ? [...result.map(application => ({ type: "Application" as const, id: application.id })), { type: "Application" as const, id: "LIST" }] : [{ type: "Application" as const, id: "LIST" }]
+            providesTags: (result) => (result && result?.length > 0) ? [...result.map(application => ({ type: "Application" as const, id: application?.id })), { type: "Application" as const, id: "LIST" }] : [{ type: "Application" as const, id: "LIST" }]
         }),
         getApplicationsByInternship: builder.query<Applications[], string>({
             query: (id) => `/applications/internship/${id}`,
-            providesTags: (result) => result ? [...result.map(application => ({ type: "Application" as const, id: application.id })), { type: "Application" as const, id: "LIST" }] : [{ type: "Application" as const, id: "LIST" }]
+            providesTags: (result) => result ? [...result.map(application => ({ type: "Application" as const, id: application?.id })), { type: "Application" as const, id: "LIST" }] : [{ type: "Application" as const, id: "LIST" }]
         }),
     }),
 });

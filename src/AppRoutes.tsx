@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
@@ -15,23 +15,10 @@ import PostInternship from './pages/PostInternship';
 import InternshipPage from './pages/InternshipPage';
 import EditInternship from './pages/EditInternship';
 import Students from './pages/Students';
-import { useAppSelector } from './app/hooks';
-import { useGetApplicationsByStudentQuery } from './app/api/application';
-import { skipToken } from '@reduxjs/toolkit/query';
-import { useDispatch } from 'react-redux';
-import { setApplications } from './app/applicationsSlice';
 import Applications from './pages/Applications';
 import Applicants from './pages/Applicants';
 
 const AppRoutes: React.FC = () => {
-
-    const dispatch = useDispatch();
-    const user = useAppSelector(state => state.auth.user);
-    const { data: applications } = useGetApplicationsByStudentQuery(user?.studentId ?? skipToken)
-    useEffect(() => {
-        if(applications) dispatch(setApplications(applications));
-        else dispatch(setApplications([]))
-    }, [applications, dispatch]);
 
     return (
         <Router>

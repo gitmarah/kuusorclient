@@ -21,7 +21,7 @@ const StudentExcerpt: React.FC<Props> = ({ student }) => {
                             <div className='flex gap-1'>
                                 <p className='font-bold text-sm whitespace-nowrap flex items-center'>{student?.firstname} {student?.lastname}<BadgeCheck size={17} color='#fff' fill='#74B4DA' /></p>
                             </div>
-                            <p>{student?.address}</p>
+                            <p className='text-center'>{student?.address}</p>
                             <p className='text-gray-400 text-[0.7rem]'>{student?.university}</p>
                         </div>
                     </div>
